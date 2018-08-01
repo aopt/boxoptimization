@@ -1,0 +1,43 @@
+#
+# Network for boxes problem 
+# This is not a pure network as we have a cardinality (or hop) constraint
+#
+digraph boxes {
+  
+  #graph statement
+  graph [overlap = true, fontsize = 10]
+  
+  node [shape = oval, style = filled, color = blue, fillcolor = lightblue]
+  item1 item2 item3 item4 item5 item6
+  node [shape = oval, style = filled, color = black, fillcolor = orange]
+  sink
+
+
+  item1 -> item2 [label = "1"] 
+  item1 -> item3 [label = "1,2", color=red, penwidth=2] 
+  item1 -> item4 [label = "1,2,3"] 
+  item1 -> item5 [label = "1,2,3,4"] 
+  item1 -> item6 [label = "1,2,3,4,5"] 
+  item1 -> sink [label = "1,2,3,4,5,6"] 
+
+  item2 -> item3 [label = "2"] 
+  item2 -> item4 [label = "2,3"] 
+  item2 -> item5 [label = "2,3,4"] 
+  item2 -> item6 [label = "2,3,4,5"] 
+  item2 -> sink [label = "2,3,4,5,6"] 
+
+  item3 -> item4 [label = "3"] 
+  item3 -> item5 [label = "3,4", color=red, penwidth=2] 
+  item3 -> item6 [label = "3,4,5"] 
+  item3 -> sink [label = "3,4,5,6"] 
+
+  item4 -> item5 [label = "4"] 
+  item4 -> item6 [label = "4,5"] 
+  item4 -> sink [label = "4,5,6"] 
+
+  item5 -> item6 [label = "5"] 
+  item5 -> sink [label = "5,6", color=red, penwidth=2] 
+
+  item6 -> sink [label = "6"] 
+
+}
